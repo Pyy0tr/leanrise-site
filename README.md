@@ -43,8 +43,20 @@ leanrise-site/
 └── netlify.toml       # config Netlify
 ```
 
+## Pages
+
+| URL | Statut | Description |
+|-----|--------|-------------|
+| `/` | Placeholder | Index |
+| `/landing-v1/` | ✅ Live | Landing page v1 — direction validée Gianni |
+| `/admin/` | ✅ Live | Interface Decap CMS |
+
 ## Funnel
 
 ```
 Instagram ad → VSL → Calendly → Page merci
 ```
+
+## Prochaines étapes
+- Intégrer retour détaillé Gianni (animations, style minimaliste)
+- Construire landing finale, VSL, page merci
