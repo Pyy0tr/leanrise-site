@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Paramètres du site"
+    files:
+      - name: "general"
+        label: "Général"
+        file: "src/_data/settings.yml"
+        fields:
+          - { label: "Titre principal", name: "hero_title", widget: "string" }
+          - { label: "Sous-titre", name: "hero_subtitle", widget: "text" }
+          - { label: "Texte du bouton CTA", name: "cta_text", widget: "string", default: "Réserver mon appel découverte" }
+          - { label: "Lien Calendly", name: "calendly_url", widget: "string", default: "https://calendly.com/giannidiguida-coaching/30min" }
+
+  - name: "transformations"
+    label: "Photos de transformation"
+    folder: "src/_data/transformations"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Prénom du client", name: "title", widget: "string" }
+      - { label: "Photo avant", name: "photo_before", widget: "image" }
+      - { label: "Photo après", name: "photo_after", widget: "image" }
+      - { label: "Résultat (ex: -12kg en 3 mois)", name: "result", widget: "string" }
+      - { label: "Témoignage", name: "quote", widget: "text", required: false }
