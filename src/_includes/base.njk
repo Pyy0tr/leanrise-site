@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }} — LEANRISE</title>
     <link rel="stylesheet" href="/assets/css/main.css" />
+    {% if pageCss %}
+    <link rel="stylesheet" href="/assets/css/{{ pageCss }}" />
+    {% endif %}
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
