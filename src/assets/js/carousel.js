@@ -31,7 +31,9 @@
   function goTo(index) {
     current = (index + slides.length) % slides.length;
     setActive(current);
-    slides[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const slide = slides[current];
+    const targetLeft = slide.offsetLeft - (track.offsetWidth - slide.offsetWidth) / 2;
+    track.scrollTo({ left: targetLeft, behavior: 'smooth' });
   }
 
   function startAutoplay() {

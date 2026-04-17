@@ -363,7 +363,7 @@ body {
 }
 
 .carousel {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .carousel__track {
