@@ -83,7 +83,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 64px;
-  padding: 0 var(--space-md);
+  padding: 0 0.75rem;
   background-color: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
