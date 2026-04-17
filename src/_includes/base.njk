@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/assets/css/{{ pageCss }}" />
     {% endif %}
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    {% if pageJs %}
+    <script src="/assets/js/{{ pageJs }}" defer></script>
+    {% endif %}
   </head>
   <body>
     {{ content | safe }}
