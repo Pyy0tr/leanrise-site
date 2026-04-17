@@ -82,7 +82,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem var(--space-md);
+  height: 64px;
+  padding: 0 var(--space-md);
   background-color: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -96,7 +97,7 @@ body {
 }
 
 .nav__logo-img {
-  height: 28px;
+  height: 52px;
   width: auto;
   display: block;
 }
