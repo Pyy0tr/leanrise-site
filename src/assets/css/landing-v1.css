@@ -420,19 +420,31 @@ body {
 }
 
 .carousel__dot {
+  position: relative;
+  height: 28px;
+  width: 28px;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.carousel__dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 8px;
   width: 8px;
   border-radius: 9999px;
   background-color: var(--color-text-muted);
   transition: width 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-  border: none;
-  padding: 10px;
-  background-clip: content-box;
-  box-sizing: content-box;
 }
 
-.carousel__dot.is-active {
+.carousel__dot.is-active::after {
   width: 24px;
   background-color: var(--color-text);
 }
