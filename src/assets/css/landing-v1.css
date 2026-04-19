@@ -407,101 +407,153 @@ body {
 }
 
 /* ============================================
-   TRANSFORMATIONS — CAROUSEL
+   TRANSFORMATIONS — GALLERY DOUBLE SCROLL
    ============================================ */
 .transformations {
   background-color: var(--color-surface);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .transformations .section__inner {
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
   padding-bottom: var(--space-md);
 }
 
-.carousel {
-  overflow: visible;
-}
-
-.carousel__track {
+/* Gallery container */
+.gallery {
   display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 1rem;
-  padding: 0 10vw;
-  cursor: grab;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.carousel__track::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel__track:active,
-.carousel__track.is-dragging {
-  cursor: grabbing;
-}
-
-.carousel__slide {
-  flex: 0 0 80vw;
-  max-width: 560px;
-  aspect-ratio: 3/2;
-  scroll-snap-align: center;
-  border-radius: var(--radius-md);
+  flex-direction: column;
+  gap: 0.75rem;
   overflow: hidden;
-  opacity: 0.8;
-  transition: opacity 0.4s ease;
 }
 
-.carousel__slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
+.gallery__row {
+  overflow: hidden;
+}
+
+/* Tracks — layout commun */
+.gallery__track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+}
+
+/* Rangée 1 : vers la gauche */
+.gallery__track--left {
+  animation: galleryLeft 55s linear infinite;
+}
+
+/* Rangée 2 : vers la droite */
+.gallery__track--right {
+  animation: galleryRight 60s linear infinite;
+}
+
+/* Pause au survol pour laisser regarder */
+.gallery:hover .gallery__track--left,
+.gallery:hover .gallery__track--right {
+  animation-play-state: running; /* reste actif, on pause seulement via JS au clic */
+}
+
+.gallery__track.is-paused {
+  animation-play-state: paused !important;
+}
+
+@keyframes galleryLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes galleryRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Images */
+.gallery__item {
+  height: clamp(160px, 26vw, 260px);
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.gallery__item:hover {
+  transform: scale(1.03);
+}
+
+.gallery__item[aria-hidden="true"] {
   pointer-events: none;
 }
 
-.carousel__slide.is-active {
-  opacity: 1;
+.gallery__item img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
 
-/* Dots */
-.carousel__dots {
+/* ============================================
+   LIGHTBOX
+   ============================================ */
+.gallery__lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.92);
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 6px;
-  margin-top: 1.25rem;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.carousel__dot {
-  position: relative;
-  height: 28px;
-  width: 28px;
-  border-radius: 9999px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  flex-shrink: 0;
+.gallery__lightbox.is-open {
+  opacity: 1;
+  pointer-events: all;
 }
 
-.carousel__dot::after {
-  content: '';
+.gallery__lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 10px;
+  transform: scale(0.86);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+}
+
+.gallery__lightbox.is-open .gallery__lightbox-img {
+  transform: scale(1);
+}
+
+.gallery__lightbox-close {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 8px;
-  width: 8px;
-  border-radius: 9999px;
-  background-color: var(--color-text-muted);
-  transition: width 0.3s ease, background-color 0.3s ease;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
 }
 
-.carousel__dot.is-active::after {
-  width: 24px;
-  background-color: var(--color-text);
+.gallery__lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.16);
 }
 
 /* ============================================
