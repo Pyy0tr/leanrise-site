@@ -102,53 +102,25 @@ pageJs: gallery.js
   </div>
 
   <div class="gallery" data-reveal data-delay="2">
-    <!-- Rangée 1 — scroll gauche -->
-    <div class="gallery__row">
-      <div class="gallery__track gallery__track--left">
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-01.jpeg" alt="Transformation 1" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-02.jpeg" alt="Transformation 2" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-03.jpeg" alt="Transformation 3" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-04.jpeg" alt="Transformation 4" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-05.jpeg" alt="Transformation 5" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-06.jpeg" alt="Transformation 6" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-07.jpeg" alt="Transformation 7" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-08.jpeg" alt="Transformation 8" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-09.jpeg" alt="Transformation 9" loading="lazy"></div>
-        <!-- duplicate pour boucle infinie -->
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-01.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-02.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-03.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-04.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-05.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-06.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-07.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-08.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-09.jpeg" alt="" loading="lazy"></div>
-      </div>
+    <div class="gallery__stage" aria-label="Carrousel de transformations">
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-01.jpeg" alt="Transformation 1" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-02.jpeg" alt="Transformation 2" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-03.jpeg" alt="Transformation 3" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-04.jpeg" alt="Transformation 4" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-05.jpeg" alt="Transformation 5" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-06.jpeg" alt="Transformation 6" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-07.jpeg" alt="Transformation 7" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-08.jpeg" alt="Transformation 8" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-09.jpeg" alt="Transformation 9" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-10.jpeg" alt="Transformation 10" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-11.jpeg" alt="Transformation 11" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-12.jpeg" alt="Transformation 12" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-13.jpeg" alt="Transformation 13" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-14.jpeg" alt="Transformation 14" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-15.jpeg" alt="Transformation 15" loading="eager" decoding="async"></div>
+      <div class="gallery__item"><img src="/assets/images/photos/transformation-16.jpeg" alt="Transformation 16" loading="eager" decoding="async"></div>
     </div>
-
-    <!-- Rangée 2 — scroll droite -->
-    <div class="gallery__row">
-      <div class="gallery__track gallery__track--right">
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-10.jpeg" alt="Transformation 10" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-11.jpeg" alt="Transformation 11" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-12.jpeg" alt="Transformation 12" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-13.jpeg" alt="Transformation 13" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-14.jpeg" alt="Transformation 14" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-15.jpeg" alt="Transformation 15" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-16.jpeg" alt="Transformation 16" loading="lazy"></div>
-        <div class="gallery__item"><img src="/assets/images/photos/transformation-17.jpeg" alt="Transformation 17" loading="lazy"></div>
-        <!-- duplicate pour boucle infinie -->
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-10.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-11.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-12.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-13.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-14.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-15.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-16.jpeg" alt="" loading="lazy"></div>
-        <div class="gallery__item" aria-hidden="true"><img src="/assets/images/photos/transformation-17.jpeg" alt="" loading="lazy"></div>
-      </div>
-    </div>
+    <div class="gallery__dots" role="tablist" aria-label="Navigation"></div>
   </div>
 </section>
 
@@ -161,7 +133,9 @@ pageJs: gallery.js
 <!-- ========== GIANNI ========== -->
 <section class="section coach" id="coach">
   <div class="section__inner">
-    <div class="coach__photo coach__photo--placeholder" data-reveal></div>
+    <div class="coach__photo" data-reveal>
+      <img src="/assets/images/photos/gianni.jpeg" alt="Gianni Di Guida — coach fitness" loading="lazy" decoding="async">
+    </div>
     <span class="section__tag" data-reveal data-delay="1">Le coach</span>
     <h2 class="section__title" data-reveal data-delay="2">Gianni Di Guida</h2>
     <p class="coach__bio" data-reveal data-delay="3">Coach fitness en ligne spécialisé dans la transformation des hommes actifs. Mon approche : zéro régime, zéro programme générique. Uniquement ce qui fonctionne pour toi, dans ta vie.</p>

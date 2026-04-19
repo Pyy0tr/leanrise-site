@@ -407,7 +407,7 @@ body {
 }
 
 /* ============================================
-   TRANSFORMATIONS — GALLERY DOUBLE SCROLL
+   TRANSFORMATIONS — GALLERY CARD CAROUSEL
    ============================================ */
 .transformations {
   background-color: var(--color-surface);
@@ -421,80 +421,112 @@ body {
   padding-bottom: var(--space-md);
 }
 
-/* Gallery container */
 .gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
   overflow: hidden;
+  padding: var(--space-sm) 0 var(--space-md);
 }
 
-.gallery__row {
-  overflow: hidden;
+/*
+  Stage : overflow visible — les cartes latérales débordent.
+  .gallery (overflow: hidden) clippe aux bords.
+  Hauteur = largeur de la carte carrée.
+*/
+.gallery__stage {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 42vw, 540px);
+  overflow: visible;
 }
 
-/* Tracks — layout commun */
-.gallery__track {
-  display: flex;
-  gap: 0.75rem;
-  width: max-content;
-}
-
-/* Rangée 1 : vers la gauche */
-.gallery__track--left {
-  animation: galleryLeft 55s linear infinite;
-}
-
-/* Rangée 2 : vers la droite */
-.gallery__track--right {
-  animation: galleryRight 60s linear infinite;
-}
-
-/* Pause au survol pour laisser regarder */
-.gallery:hover .gallery__track--left,
-.gallery:hover .gallery__track--right {
-  animation-play-state: running; /* reste actif, on pause seulement via JS au clic */
-}
-
-.gallery__track.is-paused {
-  animation-play-state: paused !important;
-}
-
-@keyframes galleryLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes galleryRight {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
-}
-
-/* Images */
+/*
+  Cartes carrées : width = height du stage (images 1080×1080).
+  Ancrées à left: 50%, translateX(-50%) les centre.
+  Par défaut : hors champ à droite.
+*/
 .gallery__item {
-  height: clamp(160px, 26vw, 260px);
-  flex-shrink: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: zoom-in;
-  transition: transform 0.3s ease;
-}
-
-.gallery__item:hover {
-  transform: scale(1.03);
-}
-
-.gallery__item[aria-hidden="true"] {
-  pointer-events: none;
-}
-
-.gallery__item img {
+  position: absolute;
+  width: clamp(280px, 42vw, 540px); /* carré = stage height */
   height: 100%;
-  width: auto;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(calc(-50% + 180%));
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.4s ease;
+}
+
+/* Carte active — centrée, pas de crop */
+.gallery__item.is-current {
+  transform: translateX(-50%);
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 3;
+  cursor: zoom-in;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+}
+
+/*
+  Décalage prev/next :
+  translateX(calc(-50% - 95%)) = la carte recule de 95% de sa propre largeur
+  → ~30% de la carte est visible sur le bord gauche/droit
+*/
+.gallery__item.is-prev {
+  transform: translateX(calc(-50% - 95%)) scale(0.88);
+  opacity: 0.5;
+  pointer-events: auto;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.gallery__item.is-next {
+  transform: translateX(calc(-50% + 95%)) scale(0.88);
+  opacity: 0.5;
+  pointer-events: auto;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Images carrées — pas de crop, pas de letterbox */
+.gallery__item img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
   pointer-events: none;
   user-select: none;
+}
+
+/* Dots de navigation */
+.gallery__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: var(--space-sm);
+}
+
+.gallery__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.gallery__dot.is-active {
+  background: var(--color-accent);
+  transform: scale(1.4);
+}
+
+/* Accessibilité : pas d'animation */
+@media (prefers-reduced-motion: reduce) {
+  .gallery__item { transition: none; }
 }
 
 /* ============================================
@@ -559,12 +591,18 @@ body {
 /* ============================================
    COACH
    ============================================ */
-.coach__photo--placeholder {
+.coach__photo {
   width: 100%;
   aspect-ratio: 4/5;
-  background-color: var(--color-surface);
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.coach__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .coach__bio {
