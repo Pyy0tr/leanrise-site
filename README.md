@@ -50,8 +50,7 @@ leanrise-site/
 
 | URL | Statut | Description |
 |-----|--------|-------------|
-| `/` | Placeholder | Index |
-| `/landing-v1/` | ✅ Live | Landing page v1 — direction validée Gianni |
+| `/` | ✅ Live | Landing page principale |
 | `/admin/` | ✅ Live | Interface Decap CMS |
 
 ## Funnel
