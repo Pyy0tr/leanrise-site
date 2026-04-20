@@ -37,13 +37,18 @@ leanrise-site/
 │   ├── _data/         # contenu géré par Decap CMS (YAML/JSON)
 │   ├── assets/
 │   │   ├── css/
+│   │   │   └── main.css
 │   │   ├── js/
+│   │   │   ├── animations.js
+│   │   │   └── gallery.js
 │   │   └── images/
+│   │       ├── logo-leanrise-light.png
+│   │       └── photos/  # toutes en .webp
 │   ├── admin/         # interface Decap CMS (/admin)
 │   └── robots.txt     # anti-bot (SEO crawlers + AI bots bloqués)
 ├── _site/             # output compilé — ignoré par git
 ├── .eleventy.js       # config 11ty
-└── netlify.toml       # config Netlify (conservé, non utilisé)
+└── netlify.toml       # conservé, non utilisé (migration Vercel)
 ```
 
 ## Pages
@@ -56,9 +61,14 @@ leanrise-site/
 ## Funnel
 
 ```
-Instagram ad → VSL → Calendly → Page merci
+Instagram ad → Landing page → Calendly → Page merci
 ```
 
+## Optimisations images
+- Format WebP (converti depuis JPEG, -48% de poids)
+- `loading="eager"` uniquement sur `transformation-01.webp`
+- `loading="lazy"` sur toutes les autres photos
+
 ## Prochaines étapes
-- Intégrer retour détaillé Gianni (animations, style minimaliste)
-- Construire landing finale, VSL, page merci
+- Configurer Decap CMS pour Gianni (accès client au contenu)
+- Page merci post-Calendly
