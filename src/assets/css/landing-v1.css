@@ -209,23 +209,21 @@ body {
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-color: #1a1a1a;
-  /* remplacer par : background-image: url('/assets/images/gianni-hero.jpg'); */
+  background-image: url('/assets/images/photos/gianni-profile.jpeg');
   background-size: cover;
-  background-position: center top;
+  background-position: top right;
+  opacity: 0.99;
 }
 
-/* gradient pour lisibilité du texte sur photo */
+/* Double gradient : lisibilité texte (gauche + bas) */
 .hero__bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 30%,
-    rgba(10, 10, 10, 0.7) 65%,
-    rgba(10, 10, 10, 0.97) 100%
-  );
+  opacity: 1;
+  background:
+    linear-gradient(to right,  rgba(10, 10, 10, 0.88) 35%, transparent 75%),
+    linear-gradient(to bottom, transparent 30%, rgba(10, 10, 10, 0.85) 70%, rgba(10, 10, 10, 0.98) 100%);
 }
 
 .hero__content {
