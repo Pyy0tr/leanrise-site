@@ -9,14 +9,16 @@ Site de Gianni Di Guida, coach fitness en ligne. Brand : **LEANRISE**.
 | Static site generator | 11ty (Eleventy) v3 |
 | Templating | Nunjucks |
 | CMS client | Decap CMS |
-| Hébergement | Netlify |
-| CI/CD | Netlify (auto-deploy sur push `main`) |
+| Hébergement | Vercel (migré depuis Netlify — 2026-04-20) |
+| CI/CD | Vercel (auto-deploy sur push `main`) |
+| Domaine | `leanrise-coaching.com` (Cloudflare Registrar) |
+| DNS / Anti-bot | Cloudflare (Bot Fight Mode activé) |
 
 ## URLs
 
 | Environnement | URL |
 |---------------|-----|
-| Production | `https://leanrise.netlify.app` |
+| Production | `https://www.leanrise-coaching.com` |
 | Local | `http://localhost:8080` |
 
 ## Commandes
@@ -37,10 +39,11 @@ leanrise-site/
 │   │   ├── css/
 │   │   ├── js/
 │   │   └── images/
-│   └── admin/         # interface Decap CMS (/admin)
+│   ├── admin/         # interface Decap CMS (/admin)
+│   └── robots.txt     # anti-bot (SEO crawlers + AI bots bloqués)
 ├── _site/             # output compilé — ignoré par git
 ├── .eleventy.js       # config 11ty
-└── netlify.toml       # config Netlify
+└── netlify.toml       # config Netlify (conservé, non utilisé)
 ```
 
 ## Pages
