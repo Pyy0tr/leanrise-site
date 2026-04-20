@@ -69,6 +69,22 @@ Instagram ad → Landing page → Calendly → Page merci
 - `loading="eager"` uniquement sur `transformation-01.webp`
 - `loading="lazy"` sur toutes les autres photos
 
+## CMS client (Decap CMS) — à faire
+
+Gianni doit pouvoir gérer seul :
+- Ajouter un lien de vidéo témoignage YouTube
+- Ajouter une photo de transformation
+
+Tout le reste (textes, design, structure) est géré par Pyyotr directement.
+
+### Setup requis
+Le backend actuel (`git-gateway`) est spécifique à Netlify et ne fonctionne plus depuis la migration Vercel.
+Migration à faire vers le backend `github` :
+1. Créer une **GitHub OAuth App** (GitHub Settings → Developer settings → OAuth Apps)
+2. Déployer un **proxy OAuth** via Vercel serverless function
+3. Mettre à jour `src/admin/config.yml` avec le nouveau backend
+4. Connecter les collections CMS aux templates Nunjucks
+
 ## Prochaines étapes
-- Configurer Decap CMS pour Gianni (accès client au contenu)
+- Mettre en place le CMS (voir section ci-dessus)
 - Page merci post-Calendly
