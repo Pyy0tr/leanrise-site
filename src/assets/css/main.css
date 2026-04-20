@@ -209,7 +209,7 @@ body {
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-image: url('/assets/images/photos/gianni-profile.jpeg');
+  background-image: url('/assets/images/photos/gianni-profile.webp');
   background-size: cover;
   background-position: top right;
   opacity: 0.99;
