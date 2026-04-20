@@ -2,6 +2,7 @@ module.exports = function (eleventyConfig) {
   // Copy static assets to _site without processing them
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   return {
     dir: {
