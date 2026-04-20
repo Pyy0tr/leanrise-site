@@ -146,6 +146,87 @@ pageJs: gallery.js
   </div>
 </section>
 
+<!-- ========== TÉMOIGNAGES ========== -->
+<section class="section testimonials" id="temoignages">
+  <div class="section__inner">
+    <span class="section__tag" data-reveal>Témoignages</span>
+    <h2 class="section__title" data-reveal data-delay="1">Ils te le disent<br><em>eux-mêmes.</em></h2>
+
+    <details class="testimonials__accordion" data-reveal data-delay="2">
+      <summary class="testimonials__summary">
+        <span>Retrouve ici tous les témoignages des hommes dont le quotidien a changé grâce à la méthode LEANRISE</span>
+        <span class="testimonials__chevron" aria-hidden="true"></span>
+      </summary>
+
+      <div class="testimonials__content">
+
+        <!-- Vidéos longues -->
+        <div class="testimonials__grid testimonials__grid--long">
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="K3ftJJDlUg0" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/K3ftJJDlUg0/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="0yf3zuDz2jo" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/0yf3zuDz2jo/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="U3x-tj6jLd4" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/U3x-tj6jLd4/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="JPv7L6BbuAQ" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/JPv7L6BbuAQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Shorts -->
+        <div class="testimonials__grid testimonials__grid--short">
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="Ny5H_9__K4w" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/Ny5H_9__K4w/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="5gFG-L04as8" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/5gFG-L04as8/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="3SCNVGnO9n4" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/3SCNVGnO9n4/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="aI8YB1OKAeA" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/aI8YB1OKAeA/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="testimonials__item">
+            <button class="testimonials__facade" data-id="cHN-fHKstZg" aria-label="Lire le témoignage">
+              <img src="https://img.youtube.com/vi/cHN-fHKstZg/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="testimonials__play" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </details>
+  </div>
+</section>
+
 <!-- ========== OFFRE ========== -->
 <section class="section offer">
   <div class="section__inner">
@@ -176,3 +257,19 @@ pageJs: gallery.js
 </section>
 
 <script src="/assets/js/animations.js" defer></script>
+<script>
+  document.querySelectorAll('.testimonials__facade').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var id = this.dataset.id;
+      if (!id || this.dataset.loaded) return;
+      this.dataset.loaded = '1';
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'testimonials__iframe';
+      this.innerHTML = '';
+      this.appendChild(iframe);
+    });
+  });
+</script>
