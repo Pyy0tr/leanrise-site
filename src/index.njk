@@ -202,8 +202,9 @@ pageJs: gallery.js
       'Ny5H_9__K4w','5gFG-L04as8','3SCNVGnO9n4','aI8YB1OKAeA','cHN-fHKstZg'
     ];
 
-    var current  = 0;
-    var screen   = document.getElementById('vidgalleryScreen');
+    var current     = 0;
+    var firstRender = true;
+    var screen      = document.getElementById('vidgalleryScreen');
     var thumbsCt = document.getElementById('vidgalleryThumbs');
     var countEl  = document.getElementById('vidgalleryCount');
     var prevBtn  = document.querySelector('.vidgallery__nav--prev');
@@ -232,7 +233,9 @@ pageJs: gallery.js
       thumbs.forEach(function (t, i) {
         t.classList.toggle('is-active', i === current);
       });
-      thumbs[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      if (!firstRender) {
+        thumbs[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
 
       screen.innerHTML = '';
       var img = document.createElement('img');
@@ -269,5 +272,6 @@ pageJs: gallery.js
     nextBtn && nextBtn.addEventListener('click', function () { goTo(current + 1); });
 
     render();
+    firstRender = false;
   })();
 </script>
