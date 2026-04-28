@@ -3,32 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }} — LEANRISE</title>
-    <meta name="description" content="{{ description or 'Coaching fitness 1-1 sur-mesure pour hommes actifs. Transforme ton corps sans sacrifier ta vie avec Gianni Di Guida — LEANRISE.' }}" />
+
+    <!-- ══════════════════════════════════════════════
+         TITRE & META FONDAMENTAUX
+    ══════════════════════════════════════════════ -->
+    <title>{{ title }} — LEANRISE | Coach Sportif en France</title>
+    <meta name="description" content="{{ description or 'Gianni Di Guida, coach sportif et nutritionnel en ligne pour toute la France. Programme sur-mesure pour hommes actifs : perte de poids, prise de masse, rééquilibrage alimentaire. Résultats durables garantis — LEANRISE.' }}" />
+    <meta name="keywords" content="coach sportif, coach sportif france, coach perte de poids, coach fitness en ligne, programme fitness personnalisé, coach sportif en ligne, prise de masse, rééquilibrage alimentaire, coach nutrition france, Gianni Di Guida, LEANRISE, coaching fitness homme, perdre du poids coach, coach minceur france" />
+    <meta name="author" content="Gianni Di Guida — LEANRISE" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="French" />
+    <meta name="geo.region" content="FR" />
+    <meta name="geo.placename" content="France" />
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://www.leanrise-coaching.com{{ page.url }}" />
 
-    <!-- Open Graph -->
+    <!-- ══════════════════════════════════════════════
+         OPEN GRAPH (Facebook, LinkedIn, partage)
+    ══════════════════════════════════════════════ -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="LEANRISE" />
-    <meta property="og:title" content="{{ title }} — LEANRISE" />
-    <meta property="og:description" content="{{ description or 'Coaching fitness 1-1 sur-mesure pour hommes actifs. Transforme ton corps sans sacrifier ta vie avec Gianni Di Guida — LEANRISE.' }}" />
+    <meta property="og:site_name" content="LEANRISE — Coach Sportif France" />
+    <meta property="og:title" content="{{ title }} — LEANRISE | Coach Sportif en France" />
+    <meta property="og:description" content="{{ description or 'Coach sportif et nutritionnel en ligne pour hommes actifs partout en France. Perte de poids, prise de masse, résultats durables — Gianni Di Guida, LEANRISE.' }}" />
     <meta property="og:url" content="https://www.leanrise-coaching.com{{ page.url }}" />
-    <meta property="og:image" content="https://www.leanrise-coaching.com/assets/images/logo-leanrise-light.png" />
+    <meta property="og:image" content="https://www.leanrise-coaching.com/assets/images/og-leanrise.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Gianni Di Guida — Coach sportif LEANRISE" />
     <meta property="og:locale" content="fr_FR" />
 
-    <!-- JSON-LD -->
+    <!-- ══════════════════════════════════════════════
+         TWITTER / X CARD
+    ══════════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@leanrise_coach" />
+    <meta name="twitter:creator" content="@leanrise_coach" />
+    <meta name="twitter:title" content="{{ title }} — LEANRISE | Coach Sportif France" />
+    <meta name="twitter:description" content="{{ description or 'Coach sportif en ligne pour toute la France. Programme fitness sur-mesure, perte de poids et prise de masse avec Gianni Di Guida — LEANRISE.' }}" />
+    <meta name="twitter:image" content="https://www.leanrise-coaching.com/assets/images/og-leanrise.jpg" />
+    <meta name="twitter:image:alt" content="LEANRISE — Coach Sportif France" />
+
+    <!-- ══════════════════════════════════════════════
+         JSON-LD — DONNÉES STRUCTURÉES (Google + IA)
+         Bloc 1 : LocalBusiness (référencement local)
+    ══════════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "LEANRISE — Gianni Di Guida Coach Fitness",
-      "description": "Coaching fitness et nutrition 1-1 sur-mesure pour hommes actifs à Bordeaux et en ligne. Perte de poids, prise de masse, rééquilibrage alimentaire avec des résultats durables.",
+      "@type": ["LocalBusiness", "SportsActivityLocation"],
+      "@id": "https://www.leanrise-coaching.com/#business",
+      "name": "LEANRISE — Coach Sportif France",
+      "alternateName": ["Gianni Di Guida Coach", "LEANRISE Coaching"],
+      "description": "Gianni Di Guida est coach sportif et nutritionnel en ligne pour toute la France. Il propose des programmes de coaching fitness 1-to-1 sur-mesure pour hommes actifs : perte de poids, prise de masse musculaire, rééquilibrage alimentaire, avec des résultats durables et mesurables.",
       "url": "https://www.leanrise-coaching.com",
-      "image": "https://www.leanrise-coaching.com/assets/images/logo-leanrise-light.png",
+      "logo": "https://www.leanrise-coaching.com/assets/images/logo-leanrise-light.png",
+      "image": [
+        "https://www.leanrise-coaching.com/assets/images/og-leanrise.jpg",
+        "https://www.leanrise-coaching.com/assets/images/logo-leanrise-light.png"
+      ],
+      "telephone": "",
+      "email": "contact@leanrise-coaching.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bordeaux",
         "addressRegion": "Nouvelle-Aquitaine",
+        "postalCode": "33000",
         "addressCountry": "FR"
       },
       "geo": {
@@ -37,30 +78,217 @@
         "longitude": -0.5792
       },
       "areaServed": [
+        { "@type": "Country", "name": "France" },
         { "@type": "City", "name": "Bordeaux" },
-        { "@type": "Country", "name": "France" }
+        { "@type": "City", "name": "Paris" },
+        { "@type": "City", "name": "Lyon" },
+        { "@type": "City", "name": "Marseille" },
+        { "@type": "City", "name": "Toulouse" },
+        { "@type": "City", "name": "Nantes" }
+      ],
+      "serviceType": [
+        "Coach sportif en ligne",
+        "Coach sportif France",
+        "Coaching fitness personnel",
+        "Coaching nutrition",
+        "Programme perte de poids",
+        "Programme prise de masse musculaire",
+        "Rééquilibrage alimentaire",
+        "Coach minceur",
+        "Coaching fitness homme"
       ],
       "founder": {
         "@type": "Person",
+        "@id": "https://www.leanrise-coaching.com/#gianni",
         "name": "Gianni Di Guida",
-        "jobTitle": "Coach fitness et nutrition personnel"
+        "jobTitle": "Coach sportif et nutritionnel",
+        "description": "Coach sportif certifié spécialisé dans la transformation physique des hommes actifs en France. Expert en hypertrophie, perte de grasse et nutrition sportive.",
+        "url": "https://www.leanrise-coaching.com",
+        "image": "https://www.leanrise-coaching.com/assets/images/gianni-di-guida.jpg",
+        "sameAs": [
+          "https://www.instagram.com/leanrise_coaching",
+          "https://www.tiktok.com/@leanrise_coaching",
+          "https://www.youtube.com/@leanrise"
+        ]
       },
-      "serviceType": [
-        "Coaching fitness personnel",
-        "Coaching nutrition",
-        "Coach sportif en ligne",
-        "Perte de poids",
-        "Prise de masse musculaire"
+      "sameAs": [
+        "https://www.instagram.com/leanrise_coaching",
+        "https://www.tiktok.com/@leanrise_coaching",
+        "https://www.youtube.com/@leanrise"
       ],
-      "availableLanguage": "French",
-      "priceRange": "$$"
+      "availableLanguage": {
+        "@type": "Language",
+        "name": "French",
+        "alternateName": "fr"
+      },
+      "priceRange": "$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Programmes de coaching sportif LEANRISE",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Coaching fitness 1-to-1 en ligne",
+              "description": "Programme de coaching sportif et nutritionnel personnalisé pour hommes actifs. Perte de poids ou prise de masse sur-mesure."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Programme perte de poids",
+              "description": "Coaching spécialisé perte de poids avec suivi nutritionnel et entraînement personnalisé."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Programme prise de masse musculaire",
+              "description": "Programme hypertrophie sur-mesure pour développer sa masse musculaire de façon optimale."
+            }
+          }
+        ]
+      }
     }
     </script>
 
+    <!-- ══════════════════════════════════════════════
+         JSON-LD — Bloc 2 : Person (autorité experte)
+    ══════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://www.leanrise-coaching.com/#gianni",
+      "name": "Gianni Di Guida",
+      "givenName": "Gianni",
+      "familyName": "Di Guida",
+      "jobTitle": "Coach sportif et nutritionnel certifié",
+      "description": "Gianni Di Guida est un coach sportif et nutritionnel français spécialisé dans la transformation physique des hommes actifs. Fondateur de LEANRISE, il propose un coaching en ligne disponible dans toute la France axé sur la perte de poids durable et la prise de masse musculaire.",
+      "url": "https://www.leanrise-coaching.com",
+      "image": "https://www.leanrise-coaching.com/assets/images/gianni-di-guida.jpg",
+      "nationality": "French",
+      "knowsAbout": [
+        "coaching sportif",
+        "nutrition sportive",
+        "perte de poids",
+        "prise de masse musculaire",
+        "hypertrophie",
+        "rééquilibrage alimentaire",
+        "fitness homme",
+        "entraînement en force"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "LEANRISE",
+        "url": "https://www.leanrise-coaching.com"
+      },
+      "sameAs": [
+        "https://www.instagram.com/leanrise_coaching",
+        "https://www.tiktok.com/@leanrise_coaching",
+        "https://www.youtube.com/@leanrise"
+      ]
+    }
+    </script>
+
+    <!-- ══════════════════════════════════════════════
+         JSON-LD — Bloc 3 : WebSite (SearchAction)
+    ══════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.leanrise-coaching.com/#website",
+      "name": "LEANRISE — Coach Sportif France",
+      "url": "https://www.leanrise-coaching.com",
+      "description": "Site officiel de Gianni Di Guida, coach sportif et nutritionnel en ligne pour toute la France. Programmes sur-mesure de perte de poids et prise de masse musculaire.",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@id": "https://www.leanrise-coaching.com/#business"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.leanrise-coaching.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- ══════════════════════════════════════════════
+         JSON-LD — Bloc 4 : FAQ (visibilité rich snippet)
+    ══════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qui est Gianni Di Guida ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gianni Di Guida est un coach sportif et nutritionnel certifié, fondateur de LEANRISE. Il accompagne des hommes actifs partout en France dans leur transformation physique : perte de poids durable, prise de masse musculaire et rééquilibrage alimentaire."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment fonctionne le coaching sportif en ligne LEANRISE ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le coaching LEANRISE est 100% en ligne, disponible dans toute la France. Chaque programme est sur-mesure : plan d'entraînement personnalisé, suivi nutritionnel, appels de suivi réguliers et ajustements hebdomadaires en fonction de tes résultats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "LEANRISE propose-t-il un coaching pour la perte de poids ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, LEANRISE est spécialisé dans la perte de poids durable pour hommes actifs. Le programme combine entraînement adapté et nutrition ciblée pour perdre du gras sans sacrifier la masse musculaire ni la qualité de vie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Est-ce que le coaching sportif LEANRISE est disponible dans toute la France ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, le coaching LEANRISE est entièrement en ligne et accessible à toute personne en France : Paris, Lyon, Marseille, Bordeaux, Toulouse, Nantes et partout ailleurs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la différence entre LEANRISE et un coach sportif classique ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contrairement à un coach de salle classique, LEANRISE propose un suivi 1-to-1 complet : entraînement ET nutrition, disponible 7j/7, adapté à ton emploi du temps d'homme actif, sans contrainte de lieu ou d'horaire."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- ══════════════════════════════════════════════
+         FAVICONS
+    ══════════════════════════════════════════════ -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- ══════════════════════════════════════════════
+         PERFORMANCE & PRECONNECT
+    ══════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
     <script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
     <link rel="stylesheet" href="/assets/css/main.css" />
   </head>
