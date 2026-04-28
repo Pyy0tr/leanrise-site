@@ -101,22 +101,12 @@ title: Coaching fitness premium — LEANRISE
 
   <div class="gallery" data-reveal data-delay="2">
     <div class="gallery__stage" aria-label="Carrousel de transformations">
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-01.webp" alt="Transformation 1" loading="eager" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-02.webp" alt="Transformation 2" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-03.webp" alt="Transformation 3" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-04.webp" alt="Transformation 4" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-05.webp" alt="Transformation 5" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-06.webp" alt="Transformation 6" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-07.webp" alt="Transformation 7" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-08.webp" alt="Transformation 8" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-09.webp" alt="Transformation 9" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-10.webp" alt="Transformation 10" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-11.webp" alt="Transformation 11" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-12.webp" alt="Transformation 12" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-13.webp" alt="Transformation 13" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-14.webp" alt="Transformation 14" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-15.webp" alt="Transformation 15" loading="lazy" decoding="async"></div>
-      <div class="gallery__item"><img src="/assets/images/photos/transformation-16.webp" alt="Transformation 16" loading="lazy" decoding="async"></div>
+      {% for item in transformations.photos %}
+      <div class="gallery__item">
+        <img src="{{ item.photo }}" alt="Transformation {{ loop.index }}"
+             loading="{{ 'eager' if loop.first else 'lazy' }}" decoding="async">
+      </div>
+      {% endfor %}
     </div>
     <div class="gallery__dots" role="tablist" aria-label="Navigation"></div>
   </div>
@@ -150,7 +140,7 @@ title: Coaching fitness premium — LEANRISE
     <span class="section__tag" data-reveal>Témoignages</span>
     <h2 class="section__title" data-reveal data-delay="1">Ils te le disent<br><em>eux-mêmes.</em></h2>
 
-    <div class="vidgallery" data-reveal data-delay="2" aria-label="Carrousel de témoignages">
+    <div class="vidgallery" data-videos='{{ testimonials.videos | dump }}' data-reveal data-delay="2" aria-label="Carrousel de témoignages">
       <div class="vidgallery__stage">
         <button class="vidgallery__nav vidgallery__nav--prev" aria-label="Témoignage précédent">&#8249;</button>
         <div class="vidgallery__screen" id="vidgalleryScreen"></div>
