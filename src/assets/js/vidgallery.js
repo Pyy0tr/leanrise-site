@@ -1,7 +1,6 @@
 (function () {
   'use strict';
-  var container = document.querySelector('.vidgallery');
-  var videos = container ? JSON.parse(container.dataset.videos || '[]') : [];
+  var videos = window.__VIDEOS__ || [];
 
   var current     = 0;
   var firstRender = true;

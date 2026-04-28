@@ -1,4 +1,6 @@
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter('json', (value) => JSON.stringify(value));
+
   // Copy static assets to _site without processing them
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");

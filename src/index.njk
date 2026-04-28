@@ -140,7 +140,8 @@ title: Coaching fitness premium — LEANRISE
     <span class="section__tag" data-reveal>Témoignages</span>
     <h2 class="section__title" data-reveal data-delay="1">Ils te le disent<br><em>eux-mêmes.</em></h2>
 
-    <div class="vidgallery" data-videos='{{ testimonials.videos | dump }}' data-reveal data-delay="2" aria-label="Carrousel de témoignages">
+    <script>window.__VIDEOS__ = {{ testimonials.videos | json | safe }};</script>
+    <div class="vidgallery" data-reveal data-delay="2" aria-label="Carrousel de témoignages">
       <div class="vidgallery__stage">
         <button class="vidgallery__nav vidgallery__nav--prev" aria-label="Témoignage précédent">&#8249;</button>
         <div class="vidgallery__screen" id="vidgalleryScreen"></div>
