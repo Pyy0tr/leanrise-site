@@ -1,6 +1,13 @@
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('json', (value) => JSON.stringify(value));
 
+  eleventyConfig.addFilter('youtubeIds', (arr) =>
+    (arr || []).map(v => {
+      const m = String(v).match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/)
+      return m ? m[1] : v
+    })
+  );
+
   // Copy static assets to _site without processing them
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
