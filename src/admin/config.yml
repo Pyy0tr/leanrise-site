@@ -14,7 +14,8 @@ collections:
     files:
       - name: "testimonials"
         label: "Vidéos YouTube"
-        file: "src/_data/testimonials.yml"
+        file: "src/_data/testimonials.json"
+        format: json
         fields:
           - name: videos
             label: "IDs YouTube (un par ligne)"
@@ -25,7 +26,8 @@ collections:
     files:
       - name: "transformations"
         label: "Photos"
-        file: "src/_data/transformations.yml"
+        file: "src/_data/transformations.json"
+        format: json
         fields:
           - name: photos
             label: Photos

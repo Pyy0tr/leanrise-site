@@ -8,11 +8,11 @@ Site de Gianni Di Guida, coach fitness en ligne. Brand : **LEANRISE**.
 |-----------|-------|
 | Static site generator | 11ty (Eleventy) v3 |
 | Templating | Nunjucks |
-| CMS client | Decap CMS |
-| Hébergement | Vercel (migré depuis Netlify — 2026-04-20) |
-| CI/CD | Vercel (auto-deploy sur push `main`) |
+| CMS client | Decap CMS v3 |
+| Auth CMS | GitHub OAuth App + proxy Vercel serverless |
+| Hébergement | Vercel (auto-deploy sur push `main`) |
 | Domaine | `leanrise-coaching.com` (Cloudflare Registrar) |
-| DNS / Anti-bot | Cloudflare (Bot Fight Mode activé) |
+| DNS / CDN / Cache | Cloudflare (proxied, cache rules actives) |
 
 ## URLs
 
@@ -20,6 +20,7 @@ Site de Gianni Di Guida, coach fitness en ligne. Brand : **LEANRISE**.
 |---------------|-----|
 | Production | `https://www.leanrise-coaching.com` |
 | Local | `http://localhost:8080` |
+| Back-office | `https://www.leanrise-coaching.com/admin/` |
 
 ## Commandes
 
@@ -32,23 +33,27 @@ npm run build   # compile le site dans _site/
 
 ```
 leanrise-site/
+├── api/
+│   ├── auth.js        # proxy OAuth GitHub — /api/auth (Vercel serverless)
+│   └── callback.js    # callback OAuth — /api/callback (Vercel serverless)
 ├── src/
-│   ├── _includes/     # layouts et partials Nunjucks
-│   ├── _data/         # contenu géré par Decap CMS (YAML/JSON)
+│   ├── _data/
+│   │   ├── testimonials.json   # IDs YouTube (géré via CMS)
+│   │   └── transformations.json # chemins photos (géré via CMS)
 │   ├── assets/
-│   │   ├── css/
-│   │   │   └── main.css
+│   │   ├── css/main.css
 │   │   ├── js/
 │   │   │   ├── animations.js
-│   │   │   └── gallery.js
-│   │   └── images/
-│   │       ├── logo-leanrise-light.png
-│   │       └── photos/  # toutes en .webp
-│   ├── admin/         # interface Decap CMS (/admin)
-│   └── robots.txt     # anti-bot (SEO crawlers + AI bots bloqués)
+│   │   │   ├── gallery.js
+│   │   │   └── vidgallery.js
+│   │   └── images/photos/      # toutes en .webp
+│   ├── admin/
+│   │   ├── index.html          # interface Decap CMS
+│   │   └── config.yml          # config CMS (backend github, collections JSON)
+│   └── robots.txt
 ├── _site/             # output compilé — ignoré par git
-├── .eleventy.js       # config 11ty
-└── netlify.toml       # conservé, non utilisé (migration Vercel)
+├── .eleventy.js       # config 11ty (filtre json custom)
+└── vercel.json        # headers de cache + routes serverless
 ```
 
 ## Pages
@@ -56,7 +61,7 @@ leanrise-site/
 | URL | Statut | Description |
 |-----|--------|-------------|
 | `/` | ✅ Live | Landing page principale |
-| `/admin/` | ✅ Live | Interface Decap CMS |
+| `/admin/` | ✅ Live | Interface Decap CMS (login GitHub) |
 
 ## Funnel
 
@@ -64,27 +69,25 @@ leanrise-site/
 Instagram ad → Landing page → Calendly → Page merci
 ```
 
-## Optimisations images
-- Format WebP (converti depuis JPEG, -48% de poids)
-- `loading="eager"` uniquement sur `transformation-01.webp`
-- `loading="lazy"` sur toutes les autres photos
+## CMS back-office (Decap CMS)
 
-## CMS client (Decap CMS) — à faire
-
-Gianni doit pouvoir gérer seul :
-- Ajouter un lien de vidéo témoignage YouTube
-- Ajouter une photo de transformation
+Gianni peut gérer seul depuis `/admin/` :
+- **Témoignages vidéo** — ajouter/supprimer des IDs YouTube
+- **Photos de transformation** — uploader des photos
 
 Tout le reste (textes, design, structure) est géré par Pyyotr directement.
 
-### Setup requis
-Le backend actuel (`git-gateway`) est spécifique à Netlify et ne fonctionne plus depuis la migration Vercel.
-Migration à faire vers le backend `github` :
-1. Créer une **GitHub OAuth App** (GitHub Settings → Developer settings → OAuth Apps)
-2. Déployer un **proxy OAuth** via Vercel serverless function
-3. Mettre à jour `src/admin/config.yml` avec le nouveau backend
-4. Connecter les collections CMS aux templates Nunjucks
+### Architecture OAuth
+```
+Navigateur → /api/auth → GitHub OAuth App → /api/callback → Decap CMS
+```
+- OAuth App GitHub : `Leanrise CMS`
+- Variables Vercel requises : `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `SITE_URL`
+
+## Optimisations
+- Images WebP (converti depuis JPEG, -48%)
+- Cache Cloudflare : règle "Cache tout le site" sur les deux hostnames
+- Headers Vercel : images `immutable 1 an`, CSS/JS `1 semaine`, HTML `must-revalidate`
 
 ## Prochaines étapes
-- Mettre en place le CMS (voir section ci-dessus)
 - Page merci post-Calendly
