@@ -4,6 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }} — LEANRISE</title>
+    <meta name="description" content="{{ description or 'Coaching fitness 1-1 sur-mesure pour hommes actifs. Transforme ton corps sans sacrifier ta vie avec Gianni Di Guida — LEANRISE.' }}" />
+    <link rel="canonical" href="https://www.leanrise-coaching.com{{ page.url }}" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LEANRISE" />
+    <meta property="og:title" content="{{ title }} — LEANRISE" />
+    <meta property="og:description" content="{{ description or 'Coaching fitness 1-1 sur-mesure pour hommes actifs. Transforme ton corps sans sacrifier ta vie avec Gianni Di Guida — LEANRISE.' }}" />
+    <meta property="og:url" content="https://www.leanrise-coaching.com{{ page.url }}" />
+    <meta property="og:image" content="https://www.leanrise-coaching.com/assets/images/logo-leanrise-light.png" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "LEANRISE",
+      "description": "Coaching fitness 1-1 sur-mesure pour hommes actifs qui veulent des résultats durables.",
+      "url": "https://www.leanrise-coaching.com",
+      "image": "https://www.leanrise-coaching.com/assets/images/logo-leanrise-light.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Gianni Di Guida",
+        "jobTitle": "Coach fitness personnel"
+      },
+      "serviceType": "Coaching fitness personnel en ligne",
+      "areaServed": "FR",
+      "availableLanguage": "French"
+    }
+    </script>
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
