@@ -36,9 +36,12 @@ leanrise-site/
 ├── api/
 │   ├── auth.js        # proxy OAuth GitHub — /api/auth (Vercel serverless)
 │   └── callback.js    # callback OAuth — /api/callback (Vercel serverless)
+├── docs/
+│   ├── guide-admin.md        # guide technique (infra, Vercel, OAuth)
+│   └── guide-utilisation.md  # guide CMS pour Gianni
 ├── src/
 │   ├── _data/
-│   │   ├── testimonials.json   # IDs YouTube (géré via CMS)
+│   │   ├── testimonials.json    # URLs YouTube (géré via CMS)
 │   │   └── transformations.json # chemins photos (géré via CMS)
 │   ├── assets/
 │   │   ├── css/main.css
@@ -46,14 +49,13 @@ leanrise-site/
 │   │   │   ├── animations.js
 │   │   │   ├── gallery.js
 │   │   │   └── vidgallery.js
-│   │   └── images/photos/      # toutes en .webp
+│   │   └── images/photos/       # toutes en .webp
 │   ├── admin/
-│   │   ├── index.html          # interface Decap CMS
-│   │   └── config.yml          # config CMS (backend github, collections JSON)
+│   │   └── index.html           # interface Decap CMS (config embarquée en JS)
 │   └── robots.txt
 ├── _site/             # output compilé — ignoré par git
-├── .eleventy.js       # config 11ty (filtre json custom)
-└── vercel.json        # headers de cache + routes serverless
+├── .eleventy.js       # config 11ty (filtres json + youtubeIds)
+└── vercel.json        # buildCommand, outputDirectory, headers de cache
 ```
 
 ## Pages
@@ -72,8 +74,12 @@ Instagram ad → Landing page → Calendly → Page merci
 ## CMS back-office (Decap CMS)
 
 Gianni peut gérer seul depuis `/admin/` :
-- **Témoignages vidéo** — ajouter/supprimer des IDs YouTube
-- **Photos de transformation** — uploader des photos
+- **Témoignages vidéo** — ajouter/supprimer/réordonner des vidéos YouTube (URL complète acceptée)
+- **Photos de transformation** — uploader/réordonner des photos
+
+La config Decap CMS est embarquée directement dans `src/admin/index.html` via `CMS.init()` — pas de fichier `config.yml` séparé.
+
+Le filtre Eleventy `youtubeIds` (dans `.eleventy.js`) extrait l'ID depuis n'importe quel format YouTube avant injection dans le template.
 
 Tout le reste (textes, design, structure) est géré par Pyyotr directement.
 
@@ -81,7 +87,7 @@ Tout le reste (textes, design, structure) est géré par Pyyotr directement.
 ```
 Navigateur → /api/auth → GitHub OAuth App → /api/callback → Decap CMS
 ```
-- OAuth App GitHub : `Leanrise CMS`
+- OAuth App GitHub : `Leanrise CMS` (⚠️ OAuth App, pas GitHub App)
 - Variables Vercel requises : `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `SITE_URL`
 
 ## Optimisations
