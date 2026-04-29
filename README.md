@@ -36,9 +36,6 @@ leanrise-site/
 ├── api/
 │   ├── auth.js        # proxy OAuth GitHub — /api/auth (Vercel serverless)
 │   └── callback.js    # callback OAuth — /api/callback (Vercel serverless)
-├── docs/
-│   ├── guide-admin.md        # guide technique (infra, Vercel, OAuth)
-│   └── guide-utilisation.md  # guide CMS pour Gianni
 ├── src/
 │   ├── _data/
 │   │   ├── testimonials.json    # URLs YouTube (géré via CMS)
