@@ -978,4 +978,30 @@ body {
     font-size: 2rem;
   }
 
+  .coach .section__inner {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    grid-template-areas:
+      "photo tag"
+      "photo title"
+      "photo bio"
+      "photo social";
+    align-items: start;
+    column-gap: var(--space-xl);
+    row-gap: var(--space-sm);
+  }
+
+  .coach__photo {
+    grid-area: photo;
+    max-width: none;
+    align-self: center;
+    margin: 0;
+  }
+
+  .coach .section__tag { grid-area: tag; }
+  .coach .section__title { grid-area: title; }
+  .coach__bio { grid-area: bio; }
+  .coach .instagram-card { grid-area: social; margin-top: var(--space-xs); }
+
 }
