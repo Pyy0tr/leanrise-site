@@ -12,6 +12,14 @@
 
   if (!screen) return;
 
+  var singleVideo = videos.length <= 1;
+  if (singleVideo) {
+    prevBtn && (prevBtn.hidden = true);
+    nextBtn && (nextBtn.hidden = true);
+    countEl && (countEl.hidden = true);
+    thumbsCt && (thumbsCt.hidden = true);
+  }
+
   var thumbs = videos.map(function (id, i) {
     var btn = document.createElement('button');
     btn.className = 'vidgallery__thumb';
@@ -40,9 +48,19 @@
     screen.innerHTML = '';
     var img = document.createElement('img');
     img.className = 'vidgallery__screen-img';
-    img.src = 'https://img.youtube.com/vi/' + videos[current] + '/hqdefault.jpg';
     img.alt = 'Témoignage ' + (current + 1);
     img.decoding = 'async';
+    // maxresdefault n'existe pas pour toutes les vidéos : YouTube renvoie alors
+    // un placeholder gris 120x90 (HTTP 200), donc on bascule sur hqdefault.
+    img.addEventListener('load', function () {
+      if (img.naturalWidth <= 120) {
+        img.src = 'https://img.youtube.com/vi/' + videos[current] + '/hqdefault.jpg';
+      }
+    });
+    img.addEventListener('error', function () {
+      img.src = 'https://img.youtube.com/vi/' + videos[current] + '/hqdefault.jpg';
+    });
+    img.src = 'https://img.youtube.com/vi/' + videos[current] + '/maxresdefault.jpg';
 
     var playBtn = document.createElement('button');
     playBtn.className = 'vidgallery__play-btn';
