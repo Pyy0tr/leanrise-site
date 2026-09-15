@@ -159,20 +159,27 @@ body {
 .nav__links {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.4rem;
 }
 
 .nav__link {
-  display: none; /* caché sur mobile */
-  font-size: 0.8rem;
+  font-size: 0.65rem;
+  font-weight: 500;
   color: var(--color-text-muted);
   text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: color 0.2s ease;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .nav__link:hover {
   color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .nav__cta {
@@ -924,7 +931,12 @@ body {
    ============================================ */
 @media (min-width: 1024px) {
   .nav__link {
-    display: inline; /* visible sur desktop */
+    font-size: 0.8rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  .nav__links {
+    gap: var(--space-sm);
   }
 
   .hero {
