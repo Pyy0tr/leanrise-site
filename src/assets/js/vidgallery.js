@@ -14,10 +14,10 @@
 
   var singleVideo = videos.length <= 1;
   if (singleVideo) {
-    prevBtn && (prevBtn.hidden = true);
-    nextBtn && (nextBtn.hidden = true);
-    countEl && (countEl.hidden = true);
-    thumbsCt && (thumbsCt.hidden = true);
+    prevBtn && (prevBtn.style.display = 'none');
+    nextBtn && (nextBtn.style.display = 'none');
+    countEl && (countEl.style.display = 'none');
+    thumbsCt && (thumbsCt.style.display = 'none');
   }
 
   var thumbs = videos.map(function (id, i) {
