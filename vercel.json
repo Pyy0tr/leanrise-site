@@ -1,6 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "_site",
+  "webAnalytics": { "enabled": true },
   "headers": [
     {
       "source": "/api/(.*)",
