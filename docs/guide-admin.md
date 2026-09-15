@@ -48,15 +48,23 @@ leanrise-site/
 
 ## Variables d'environnement Vercel
 
-Ces trois variables sont requises pour que le back office fonctionne. Les modifier dans **Vercel → leanrise-site → Settings → Environment Variables**.
+Ces variables sont requises pour que le back office fonctionne. Les modifier dans **Vercel → leanrise-site → Settings → Environment Variables**.
 
 | Variable | Valeur |
 |---|---|
 | `GITHUB_CLIENT_ID` | Client ID de l'OAuth App GitHub |
 | `GITHUB_CLIENT_SECRET` | Secret de l'OAuth App GitHub |
 | `SITE_URL` | `https://www.leanrise-coaching.com` |
+| `GITHUB_COMMIT_TOKEN` | Personal Access Token GitHub de **Pyy0tr** (scope `repo`), utilisé pour tous les commits du CMS |
+| `ALLOWED_GITHUB_USERS` | Liste blanche des comptes autorisés à se connecter à `/admin`, séparés par des virgules (ex: `Pyy0tr,giannidiguidacoaching-cell`) |
 
 ⚠️ Après toute modification des variables, faire un **Redeploy** dans Vercel pour qu'elles soient injectées dans les fonctions.
+
+### Pourquoi `GITHUB_COMMIT_TOKEN` ?
+
+Le plan Vercel Hobby bloque le build automatique dès qu'un commit est signé par quelqu'un d'autre que le propriétaire du compte Vercel (Pyy0tr) — que le repo soit public ou privé. Comme Gianni doit pouvoir gérer le contenu seul, `api/callback.js` ne renvoie plus le token OAuth de la personne connectée : il vérifie juste que son compte GitHub fait partie de `ALLOWED_GITHUB_USERS`, puis renvoie systématiquement le PAT de Pyy0tr au CMS. Résultat : tous les commits CMS sont signés `Pyy0tr`, donc jamais bloqués par Vercel.
+
+Pour générer le PAT : **github.com → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token**, scope `repo` uniquement, sans expiration courte (ou penser à le renouveler).
 
 ---
 

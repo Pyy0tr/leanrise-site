@@ -17,7 +17,23 @@ module.exports = async function (req, res) {
     return res.send(renderMessage('error', { message: data.error_description || 'OAuth échoué' }));
   }
 
-  res.send(renderMessage('success', { token: data.access_token, provider: 'github' }));
+  const userResponse = await fetch('https://api.github.com/user', {
+    headers: { Authorization: `token ${data.access_token}`, 'User-Agent': 'leanrise-cms' },
+  });
+  const user = await userResponse.json();
+
+  const allowedUsers = (process.env.ALLOWED_GITHUB_USERS || '')
+    .split(',')
+    .map((u) => u.trim().toLowerCase())
+    .filter(Boolean);
+
+  if (!user.login || !allowedUsers.includes(user.login.toLowerCase())) {
+    return res.send(renderMessage('error', { message: 'Compte GitHub non autorisé pour cet admin.' }));
+  }
+
+  // Les commits passent toujours par le PAT du propriétaire du projet Vercel
+  // (sinon Vercel Hobby bloque le build quand l'auteur du commit n'est pas le owner).
+  res.send(renderMessage('success', { token: process.env.GITHUB_COMMIT_TOKEN, provider: 'github' }));
 };
 
 function renderMessage(status, payload) {
